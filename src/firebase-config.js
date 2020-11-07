@@ -1,11 +1,11 @@
 // Firebase App (the core Firebase SDK) is always required and must be listed first
-import * as firebase from "firebase/app";
+import firebase from 'firebase/app'
 
 // Add the Firebase products that you want to use
 import "firebase/auth";
 
 // TODO: Replace the following with your app's Firebase project configuration
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyBZscA5balWnqbMFTzIFwfRtUi1H3o3A_c",
   authDomain: "news-bambu.firebaseapp.com",
   databaseURL: "https://news-bambu.firebaseio.com",
