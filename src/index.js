@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import App from './container/App';
 import reportWebVitals from './reportWebVitals';
-import { ContextProvider } from './utils/Context'
+import { ContextProvider } from './utils/Context';
+// import firebaseConfig from './firebase-config'
+// import { FirebaseAppProvider } from 'reactfire';
+
 ReactDOM.render(
+  // <FirebaseAppProvider firebaseConfig={firebaseConfig} >
   <ContextProvider>
     <App />
   </ContextProvider>,
+  // </FirebaseAppProvider>,
   document.getElementById('root')
 );
 
