@@ -36,7 +36,7 @@ export const GlobalStyle = createGlobalStyle`
 
   h1 {
     font-size: 30px;
-    font-family: 'Avenir' 'Source Sans Pro', sans-serif;
+    font-family: 'Avenir', 'Source Sans Pro', sans-serif;
     font-weight: 900;
     font-stretch: normal;
     font-style: normal;
@@ -45,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h5 {
-    font-family: 'Avenir' 'Source Sans Pro', sans-serif;
+    font-family: 'Avenir', 'Source Sans Pro', sans-serif;
   font-size: 18px;
   font-weight: 900;
   font-stretch: normal;
