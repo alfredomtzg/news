@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 
 // These imports load individual services into the firebase namespace.
 import 'firebase/auth';
-import 'firebase/database';
+import 'firebase/firestore';
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -17,5 +17,10 @@ const firebaseConfig = {
   measurementId: "G-L9BNZ4Y4J4"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const fb = firebase.initializeApp(firebaseConfig);
+
+export const db = fb.firestore();
+export const auth = fb.auth();
+
+
 console.log('firebase inicializado');

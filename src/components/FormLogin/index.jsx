@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 // Style
 import { LoginButton } from "../Style";
 // These imports load individual services into the firebase namespace.
+import { auth } from "../../firebase-config";
 import "firebase/auth";
 
 export default function LoginForm() {
@@ -30,20 +31,25 @@ export default function LoginForm() {
     event.preventDefault();
     // call Login function
     console.log(valuesLogin);
-    // await firebase
-    //   .auth()
-    //   .createUserWithEmailAndPassword(valuesLogin)
-    //   .catch(function (error) {
-    //     // Handle Errors here.
-    //     var errorCode = error.code;
-    //     var errorMessage = error.message;
-    //     if (errorCode == "auth/weak-password") {
-    //       alert("The password is too weak.");
-    //     } else {
-    //       alert(errorMessage);
-    //     }
-    //     console.log(error);
-    //   });
+    await auth
+      .createUserWithEmailAndPassword(
+        valuesLogin.username,
+        valuesLogin.password
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode == "auth/weak-password") {
+          alert("The password is too weak.");
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
+      });
   };
 
   return (
