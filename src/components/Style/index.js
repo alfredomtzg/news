@@ -78,3 +78,14 @@ export const GlobalStyle = createGlobalStyle`
   color: ${Colors.light}
   }
 `;
+
+
+export const LoginButton = styled.button`
+border-radius: 4px;
+  border: solid 1px ${Colors.light};
+  background: ${Colors.white};
+  color: ${Colors.black};
+  &:active {
+    background: ${Colors.bambu};
+  }
+`;

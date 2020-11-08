@@ -9,11 +9,13 @@ import Landing from '../pages/Landing'
 const Routes = () => {
   return (
     <Router>
+
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/home" component={Home} />
       </Switch>
+
     </Router>
   )
 }
