@@ -42,6 +42,7 @@ export const GlobalStyle = createGlobalStyle`
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
+    color: ${Colors.bambu}
   }
 
   h5 {
@@ -75,7 +76,8 @@ export const GlobalStyle = createGlobalStyle`
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: ${Colors.light}
+  color: ${Colors.light};
+  margin: 0;
   }
 `;
 
@@ -89,3 +91,36 @@ border-radius: 4px;
     background: ${Colors.bambu};
   }
 `;
+
+// Header style
+export const HeaderContainer = styled.header`
+width:100%;
+box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15);
+background-color:${Colors.white};
+
+`
+export const HeaderCenter = styled.div`
+display:flex;
+justify-content: space-between;
+align-items:center;
+max-width: 136rem;
+max-height: 8rem;
+margin: 0 auto;
+padding: 0 3.2rem;
+`
+export const ImgContainer = styled.img`
+  width: 167px;
+  height: 80px;
+`;
+export const ImgLogo = styled.img`
+  width: 3.2rem;
+  height: 3.2rem;
+  color:${Colors.bambu}
+`;
+export const UserContainer = styled.div`
+display:flex;
+align-items:center;
+p {
+  margin-right: 1.5rem;
+}
+`

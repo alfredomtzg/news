@@ -27,21 +27,24 @@ export default function LoginForm() {
   };
 
   // Function HandleSubmitLogin
-  const handleSubmitLogin = async (event) => {
+  const handleSubmitSignIn = async (event) => {
     event.preventDefault();
     // call Login function
+    // auth().signInWithEmailAndPassword(email, password)
     try {
-      const response = await auth.createUserWithEmailAndPassword(
+      const response = await auth.signInWithEmailAndPassword(
         valuesLogin.username,
         valuesLogin.password
       );
       console.log(response);
+      history.push("/home");
     } catch (error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
       if (errorCode === "auth/weak-password") {
         alert("The password is too weak.");
+        return error;
       } else {
         alert(errorMessage);
       }
@@ -50,7 +53,7 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmitLogin}>
+    <form onSubmit={handleSubmitSignIn}>
       <label htmlFor="email">
         <h5>E-mail</h5>
       </label>
@@ -73,14 +76,8 @@ export default function LoginForm() {
         value={valuesLogin.password}
         onChange={handleChangeLogin}
       />
-      {error ? (
-        <h6>Email or password incorrect. Please check and retry.</h6>
-      ) : null}
-      <Link to="/forgot-password">
-        <h5>Forgot your password?</h5>
-      </Link>
       <LoginButton type="submit">
-        <h6>Login</h6>
+        <h6>Sign in</h6>
       </LoginButton>
     </form>
   );
