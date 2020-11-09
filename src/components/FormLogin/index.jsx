@@ -30,26 +30,23 @@ export default function LoginForm() {
   const handleSubmitLogin = async (event) => {
     event.preventDefault();
     // call Login function
-    console.log(valuesLogin);
-    await auth
-      .createUserWithEmailAndPassword(
+    try {
+      const response = await auth.createUserWithEmailAndPassword(
         valuesLogin.username,
         valuesLogin.password
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        if (errorCode == "auth/weak-password") {
-          alert("The password is too weak.");
-        } else {
-          alert(errorMessage);
-        }
-        console.log(error);
-      });
+      );
+      console.log(response);
+    } catch (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === "auth/weak-password") {
+        alert("The password is too weak.");
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+    }
   };
 
   return (
