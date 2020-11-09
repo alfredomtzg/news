@@ -53,7 +53,8 @@ export const GlobalStyle = createGlobalStyle`
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: ${Colors.black}
+  margin: .5rem 0;
+  color: ${Colors.black};
 
   }
 
@@ -65,7 +66,8 @@ export const GlobalStyle = createGlobalStyle`
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: ${Colors.black}
+  margin: .5rem 0;
+  color: ${Colors.black};
   }
 
   p {
@@ -77,7 +79,7 @@ export const GlobalStyle = createGlobalStyle`
   line-height: normal;
   letter-spacing: normal;
   color: ${Colors.light};
-  margin: 0;
+  margin: .5rem 0;
   }
 `;
 
@@ -145,7 +147,7 @@ row-gap:4.8rem;
 `;
 
 export const SelectInput = styled.select`
-    display: inline-flex;
+  display: inline-flex;
   width: 20rem;
   height: 48px;
   padding: 0.8rem 1.2rem;
@@ -155,6 +157,7 @@ export const SelectInput = styled.select`
   border-radius: 0.5rem;
   color: ${Colors.darkgray};
   background-color: ${Colors.white};
+  text-align-last: center;
   caret-color: ${Colors.white};
 
   &:focus {
@@ -166,14 +169,17 @@ export const SelectInput = styled.select`
 
 export const CardNewContainer = styled.div`
   max-width: 31.2rem;
-  height: 32rem;
-  border-radius: 12px;
+  border-radius: 1.2rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   background-color: ${Colors.white};
 
   `;
 export const ImgCard = styled.img`
   width: 100%;
-  height: 192px;
- 
+  height: 19.2rem;
+  border-radius: 1.2rem 1.2rem 0 0;
+`;
+
+export const DescriptionContainer = styled.div`
+padding: 1.6rem;
 `;

@@ -1,17 +1,28 @@
 import React from "react";
 // Style
-import { CardNewContainer, ImgCard } from "../Style";
+import { CardNewContainer, ImgCard, DescriptionContainer } from "../Style";
 import Img from "../../assets/image.png";
 
-export default function CardNew(props) {
+export default function CardNew({
+  title = "Como crecer en la industria",
+  urlToImage = Img,
+  author = "Alfredo",
+  publishedAt = "30/11/1990",
+  url = "https://www.linkedin.com/in/alfredo-mart%C3%ADnez-garc%C3%ADa/",
+  description = "lorem impsus",
+}) {
   return (
     <CardNewContainer>
-      <ImgCard src={Img} alt="Image news" />
-      <h5>Lo ultimo en desarrollo web</h5>
-      <h6>Publicado el 30 de noviembre</h6>
-      <p>
-        Como llegar en htm <br /> por Renata
-      </p>
+      <a href={url} target="_blank" rel="noreferrer">
+        <ImgCard src={urlToImage} alt="Image news" />
+      </a>
+
+      <DescriptionContainer>
+        <h5> {title.substr(0, 30)} </h5>
+        <h6> Publicado: {publishedAt.substr(0, 10)} </h6>
+        <p>{description}</p>
+        <p>por {author}</p>
+      </DescriptionContainer>
     </CardNewContainer>
   );
 }
