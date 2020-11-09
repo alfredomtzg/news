@@ -7,7 +7,11 @@ export default function CardNew(props) {
   return (
     <CardNewContainer>
       <ImgCard src={Img} alt="Image news" />
-      card
+      <h5>Lo ultimo en desarrollo web</h5>
+      <h6>Publicado el 30 de noviembre</h6>
+      <p>
+        Como llegar en htm <br /> por Renata
+      </p>
     </CardNewContainer>
   );
 }
