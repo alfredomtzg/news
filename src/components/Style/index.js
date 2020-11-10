@@ -43,7 +43,10 @@ export const GlobalStyle = createGlobalStyle`
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
-    color: ${Colors.bambu}
+    color: ${Colors.bambu};
+    @media(min-width:320px) and (max-width:600px) {
+      font-size: 20px;
+}
   }
 
   h5 {
@@ -86,13 +89,27 @@ export const GlobalStyle = createGlobalStyle`
 
 
 export const LoginButton = styled.button`
-border-radius: 4px;
-  border: solid 1px ${Colors.light};
-  background: ${Colors.white};
-  color: ${Colors.black};
-  &:active {
-    background: ${Colors.bambu};
+	width:33.1rem;
+	padding: 1.2rem 1.5rem;
+  margin: 0.8rem 0;
+	font-size: 1.8rem;
+  position: relative;
+  user-select: none;
+  color: ${Colors.white};
+  background: ${Colors.bambu};
+  border: 0;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  overflow: hidden;
+  &:hover{
+    box-shadow: 0px 6px 8px -3px rgba(0,0,0,0.3);
   };
+  &:focus{
+    outline: none;
+  };
+  @media(min-width:320px) and (max-width:600px) {
+    width:30.5rem;
+  }
 `;
 
 // Header style
@@ -110,17 +127,31 @@ max-width: 136rem;
 max-height: 8rem;
 margin: 0 auto;
 padding: 0 3.2rem;
+@media(min-width:320px) and (max-width:600px) {
+  p {
+    display:none;
+  }
+}
 `;
 
 export const ImgContainer = styled.img`
-  width: 167px;
-  height: 80px;
+  width: 16.7rem;
+  height: 8rem;
+  @media(min-width:320px) and (max-width:600px) {
+    width: 8.3rem;
+  height: 4rem;
+}
 `;
 
 export const ImgLogo = styled.img`
   width: 3.2rem;
   height: 3.2rem;
+  margin: 0 .3rem;
   color:${Colors.bambu};
+  @media(min-width:320px) and (max-width:600px) {
+    width: 2rem;
+    height: 2rem;
+}
 `;
 
 export const UserContainer = styled.div`
@@ -134,6 +165,12 @@ p {
 // Main style
 export const MainContainer = styled.main`
 padding: 3.2rem 16rem;
+@media(min-width:601px) and (max-width:1024px) {
+  padding: 3.2rem 5rem;
+  }
+@media(min-width:320px) and (max-width:600px) {
+  padding: 3.2rem 1rem;
+}
 `;
 
 export const NewsContainer = styled.section`
@@ -144,6 +181,12 @@ display: grid;
 grid-template-columns: repeat(3, 1fr);
 column-gap:5rem;
 row-gap:4.8rem;
+@media(min-width:601px) and (max-width:1024px) {
+  grid-template-columns: repeat(2, 1fr);
+  }
+  @media(min-width:320px) and (max-width:600px) {
+  grid-template-columns:  1fr;
+  }
 
 `;
 
@@ -173,8 +216,11 @@ export const CardNewContainer = styled.div`
   border-radius: 1.2rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   background-color: ${Colors.white};
-
+  @media(min-width:320px) and (max-width:600px) {
+    margin: 0 auto;
+  }
   `;
+
 export const ImgCard = styled.img`
   width: 100%;
   height: 19.2rem;
@@ -184,3 +230,23 @@ export const ImgCard = styled.img`
 export const DescriptionContainer = styled.div`
 padding: 1.6rem;
 `;
+
+// Login form style
+export const LoginContainer = styled.section`
+text-align:center;
+margin-top:10%;
+`;
+export const FormContainer = styled.form`
+margin: 0 auto;
+`;
+
+export const Input = styled.input`
+  width:30rem;
+	padding: 1.2rem 1.5rem;
+  margin: 0.8rem 0;
+  background-color: ${Colors.white};
+	border: solid 1px ${Colors.darkgray} ;
+  @media(min-width:320px) and (max-width:600px) {
+    width:27rem;
+  }
+  `;

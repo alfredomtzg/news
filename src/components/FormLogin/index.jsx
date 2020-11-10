@@ -1,18 +1,18 @@
 // React and React Router
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 // Style
-import { LoginButton } from "../Style";
+import { LoginButton, Input, FormContainer } from "../Style";
 // These imports load individual services into the firebase namespace.
 import { auth } from "../../firebase-config";
 import "firebase/auth";
+import { Context } from "../../utils/Context";
 
 export default function LoginForm() {
+  // Context
+  const { setUserData, newUser, setNewUser } = useContext(Context);
   // history to redirect
   const history = useHistory();
-  // bring context data
-  // error
-  const [error, setError] = useState(false);
   // Login Values
   const [valuesLogin, setValuesLogin] = useState({
     username: "",
@@ -29,14 +29,12 @@ export default function LoginForm() {
   // Function HandleSubmitLogin
   const handleSubmitSignIn = async (event) => {
     event.preventDefault();
-    // call Login function
-    // auth().signInWithEmailAndPassword(email, password)
     try {
       const response = await auth.signInWithEmailAndPassword(
         valuesLogin.username,
         valuesLogin.password
       );
-      console.log(response);
+      setUserData(response.user.email);
       history.push("/home");
     } catch (error) {
       // Handle Errors here.
@@ -52,12 +50,35 @@ export default function LoginForm() {
     }
   };
 
+  // Function CreateNewuse
+  const createNewUser = async () => {
+    try {
+      const response = await auth.createUserWithEmailAndPassword(
+        valuesLogin.username,
+        valuesLogin.password
+      );
+      console.log(response);
+
+      setNewUser(true);
+    } catch (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === "auth/weak-password") {
+        alert("The password is too weak.");
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmitSignIn}>
+    <FormContainer onSubmit={handleSubmitSignIn}>
       <label htmlFor="email">
         <h5>E-mail</h5>
       </label>
-      <input
+      <Input
         autoFocus
         id="username"
         name="username"
@@ -69,16 +90,29 @@ export default function LoginForm() {
       <label htmlFor="password">
         <h5>Password</h5>
       </label>
-      <input
+      <Input
         id="password"
         type="password"
         name="password"
         value={valuesLogin.password}
         onChange={handleChangeLogin}
       />
-      <LoginButton type="submit">
-        <h6>Sign in</h6>
-      </LoginButton>
-    </form>
+      <br />
+      <LoginButton type="submit">Sign in</LoginButton>
+      {!newUser ? (
+        <>
+          <h5>or</h5>
+          <LoginButton
+            type="button"
+            onClick={() => {
+              createNewUser();
+              console.log("Usuario nuevo");
+            }}
+          >
+            Create New user
+          </LoginButton>
+        </>
+      ) : null}
+    </FormContainer>
   );
 }

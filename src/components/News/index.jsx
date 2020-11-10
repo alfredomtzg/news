@@ -36,34 +36,31 @@ export default function News() {
 
   useEffect(() => {
     bringNews();
-    console.log("UseEffect");
   }, [values]);
   return (
     <MainContainer>
-      <form>
-        <SelectInput name="contry" id="contry" onChange={hangleChange}>
-          <option value="mx">Mexico</option>
-          <option value="au">Australia</option>
-          <option value="us">USA</option>
-          <option value="ar">Argentina</option>
-          <option value="at">Austria</option>
-          <option value="be">Belgium</option>
-          <option value="br">Brazil</option>
-          <option value="bg">Bulgaria</option>
-          <option value="ca">Canada</option>
-          <option value="co">Colombia</option>
-        </SelectInput>
+      <SelectInput name="contry" id="contry" onChange={hangleChange}>
+        <option value="mx">Mexico</option>
+        <option value="au">Australia</option>
+        <option value="us">USA</option>
+        <option value="ar">Argentina</option>
+        <option value="at">Austria</option>
+        <option value="be">Belgium</option>
+        <option value="br">Brazil</option>
+        <option value="bg">Bulgaria</option>
+        <option value="ca">Canada</option>
+        <option value="co">Colombia</option>
+      </SelectInput>
 
-        <SelectInput id="category" name="category" onChange={hangleChange}>
-          <option value="technology">Technology</option>
-          <option value="business">Business</option>
-          <option value="entertainment">Entertainment</option>
-          <option value="general">General</option>
-          <option value="health">Health</option>
-          <option value="science">Science</option>
-          <option value="sports">Sports</option>
-        </SelectInput>
-      </form>
+      <SelectInput id="category" name="category" onChange={hangleChange}>
+        <option value="technology">Technology</option>
+        <option value="business">Business</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="general">General</option>
+        <option value="health">Health</option>
+        <option value="science">Science</option>
+        <option value="sports">Sports</option>
+      </SelectInput>
 
       <NewsContainer>
         {data.map((item, index) => {

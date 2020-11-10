@@ -6,6 +6,8 @@ export const Context = React.createContext();
 export const ContextProvider = ({ children }) => {
   const APIKEY = 'c2ecb11b02de4bffb9d3b2b679a51f72'
   const [isAuth, setIsAuth] = useState(false);
+  const [userData, setUserData] = useState("")
+  const [newUser, setNewUser] = useState(false);
 
 
 
@@ -13,8 +15,13 @@ export const ContextProvider = ({ children }) => {
   return (
     <Context.Provider
       value={{
-        isAuth, setIsAuth,
-        APIKEY
+        isAuth,
+        setIsAuth,
+        APIKEY,
+        userData,
+        setUserData,
+        newUser,
+        setNewUser
       }}>
       {children}
     </Context.Provider>
