@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-size: 10px;
     background-color: ${Colors.white};
+    box-sizing: border-box;
   }
 
   a {

@@ -1,19 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 //Style
 import { SelectInput, MainContainer, NewsContainer } from "../Style";
 // ComponentCardNew
 import CardNew from "../CardNew";
+import { Context } from "../../utils/Context";
 import "../../api";
 
 export default function News() {
+  const { APIKEY } = useContext(Context);
   const [data, setData] = useState([]);
-  const URL =
-    "http://newsapi.org/v2/everything?q=bitcoin&from=2020-10-09&sortBy=publishedAt&apiKey=c2ecb11b02de4bffb9d3b2b679a51f72";
+  const [values, setValues] = useState({
+    contry: "mx",
+    category: "tecnology",
+  });
+
+  const hangleChange = (event) => {
+    setValues({
+      ...values,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const URL = `https://newsapi.org/v2/top-headlines?country=${values.contry}&category=${values.category}&apiKey=${APIKEY}`;
+
   const bringNews = () => {
     fetch(URL)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setData(data.articles);
       })
       .catch((err) => {
@@ -21,41 +34,37 @@ export default function News() {
       });
   };
 
+  useEffect(() => {
+    bringNews();
+    console.log("UseEffect");
+  }, [values]);
   return (
     <MainContainer>
-      <SelectInput
-        id="contry"
-        name="contry"
-        // value={props.valuesSignUp.gender}
-        // onChange={props.handleChangeCreateUser}
-      >
-        <option defaultValue value="choose">
-          Contry
-        </option>
-        <option value="male">Mexico</option>
-        <option value="female">Colombia</option>
-        <option value="other">USA</option>
-      </SelectInput>
+      <form>
+        <SelectInput name="contry" id="contry" onChange={hangleChange}>
+          <option value="mx">Mexico</option>
+          <option value="au">Australia</option>
+          <option value="us">USA</option>
+          <option value="ar">Argentina</option>
+          <option value="at">Austria</option>
+          <option value="be">Belgium</option>
+          <option value="br">Brazil</option>
+          <option value="bg">Bulgaria</option>
+          <option value="ca">Canada</option>
+          <option value="co">Colombia</option>
+        </SelectInput>
 
-      <SelectInput
-        id="category"
-        name="category"
-        // value={props.valuesSignUp.gender}
-        // onChange={props.handleChangeCreateUser}
-      >
-        <option defaultValue value="choose">
-          Category
-        </option>
-        <option value="male">Tec</option>
-        <option value="female">Bitcoin</option>
-      </SelectInput>
-      <button
-        onClick={() => {
-          bringNews();
-        }}
-      >
-        News
-      </button>
+        <SelectInput id="category" name="category" onChange={hangleChange}>
+          <option value="technology">Technology</option>
+          <option value="business">Business</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="general">General</option>
+          <option value="health">Health</option>
+          <option value="science">Science</option>
+          <option value="sports">Sports</option>
+        </SelectInput>
+      </form>
+
       <NewsContainer>
         {data.map((item, index) => {
           return (
