@@ -64,19 +64,25 @@ export default function News() {
       </SelectInput>
 
       <NewsContainer>
-        {data.map((item, index) => {
-          return (
-            <CardNew
-              key={index}
-              title={item.title}
-              publishedAt={item.publishedAt}
-              author={item.author}
-              url={item.url}
-              urlToImage={item.urlToImage}
-              description={item.description}
-            />
-          );
-        })}
+        {data.length === 0 ? (
+          <CardNew />
+        ) : (
+          data?.map((item, index) => {
+            return (
+              <CardNew
+                key={index}
+                title={item.title}
+                publishedAt={item.publishedAt}
+                author={item.author}
+                url={item.url}
+                urlToImage={item.urlToImage}
+                description={item.description}
+              />
+            );
+          })
+        )}
+
+        {}
       </NewsContainer>
     </MainContainer>
   );
