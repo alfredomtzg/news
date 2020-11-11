@@ -27,7 +27,8 @@ export default function News() {
     fetch(URL)
       .then((response) => response.json())
       .then((data) => {
-        setData(data.articles);
+        console.log(data);
+        setData([...data.articles]);
       })
       .catch((err) => {
         console.log(err);
@@ -63,19 +64,25 @@ export default function News() {
       </SelectInput>
 
       <NewsContainer>
-        {data.map((item, index) => {
-          return (
-            <CardNew
-              key={index}
-              title={item.title}
-              publishedAt={item.publishedAt}
-              author={item.author}
-              url={item.url}
-              urlToImage={item.urlToImage}
-              description={item.description}
-            />
-          );
-        })}
+        {data.length === 0 ? (
+          <CardNew />
+        ) : (
+          data?.map((item, index) => {
+            return (
+              <CardNew
+                key={index}
+                title={item.title}
+                publishedAt={item.publishedAt}
+                author={item.author}
+                url={item.url}
+                urlToImage={item.urlToImage}
+                description={item.description}
+              />
+            );
+          })
+        )}
+
+        {}
       </NewsContainer>
     </MainContainer>
   );

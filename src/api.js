@@ -1,25 +1,12 @@
 const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('c2ecb11b02de4bffb9d3b2b679a51f72');
+const newsapi = new NewsAPI('9103665cf0df40789a6d3c1d22e5c69b', { corsProxyUrl: 'https://cors-anywhere.herokuapp.com/' });
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but you need to include at least one of them
 
-export const APIKEY = 'c2ecb11b02de4bffb9d3b2b679a51f72'
+newsapi.v2.topHeadlines({
+  category: 'business',
+  country: 'us'
+}).then(response => {
+  console.log(response);
+});
 
-export const HeadApi = (contry) => {
-  const url =
-    `https://newsapi.org/v2/top-headlines?country=${contry}&apiKey=${APIKEY}`;
-
-
-  var req = new Request(url);
-
-  fetch(req)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data.articles);
-
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-}

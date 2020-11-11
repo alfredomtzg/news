@@ -4,7 +4,7 @@ import React, { useState } from "react";
 export const Context = React.createContext();
 
 export const ContextProvider = ({ children }) => {
-  const APIKEY = 'c2ecb11b02de4bffb9d3b2b679a51f72'
+  const APIKEY = '9103665cf0df40789a6d3c1d22e5c69b'
   const [isAuth, setIsAuth] = useState(false);
   const [userData, setUserData] = useState("")
   const [newUser, setNewUser] = useState(false);

@@ -5,6 +5,7 @@ import App from './container/App';
 import reportWebVitals from './reportWebVitals';
 import { ContextProvider } from './utils/Context';
 import './firebase-config'
+import './api'
 
 
 
