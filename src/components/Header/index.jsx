@@ -5,15 +5,12 @@ import { useHistory } from "react-router-dom";
 import Logo from "../../assets/logo/woolworth.png";
 import Logo2 from "../../assets/logo/woolworth@2x.png";
 import Logo3 from "../../assets/logo/woolworth@3x.png";
-import IconUser from "../../assets/usuario.svg";
-import IconOut from "../../assets/cerrar-sesion.svg";
 
 // style
 import {
   ImgContainer,
   HeaderContainer,
   HeaderCenter,
-  ImgLogo,
   UserContainer,
 } from "../../components/Style";
 // Context
@@ -46,15 +43,16 @@ export default function Header() {
         <h1>NEWS</h1>
         <UserContainer>
           <p>{userData}</p>
-          {/* <ImgLogo src={IconUser} alt="icon user" /> */}
+
           <span class="material-icons">account_circle</span>
-          <ImgLogo
-            src={IconOut}
-            alt="icon user"
+          <span
+            class="material-icons"
             onClick={() => {
               signOut();
             }}
-          />
+          >
+            meeting_room
+          </span>
         </UserContainer>
       </HeaderCenter>
     </HeaderContainer>

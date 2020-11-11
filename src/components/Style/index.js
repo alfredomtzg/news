@@ -85,6 +85,9 @@ export const GlobalStyle = createGlobalStyle`
   color: ${Colors.light};
   margin: .5rem 0;
   }
+  span{
+    color: ${Colors.bambu};
+  }
 `;
 
 
