@@ -46,7 +46,8 @@ export default function Header() {
         <h1>NEWS</h1>
         <UserContainer>
           <p>{userData}</p>
-          <ImgLogo src={IconUser} alt="icon user" />
+          {/* <ImgLogo src={IconUser} alt="icon user" /> */}
+          <span class="material-icons">account_circle</span>
           <ImgLogo
             src={IconOut}
             alt="icon user"

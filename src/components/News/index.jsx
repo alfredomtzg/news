@@ -28,7 +28,7 @@ export default function News() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setData(data.articles);
+        setData([...data.articles]);
       })
       .catch((err) => {
         console.log(err);

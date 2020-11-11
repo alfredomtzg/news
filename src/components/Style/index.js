@@ -139,7 +139,7 @@ export const ImgContainer = styled.img`
   height: 8rem;
   @media(min-width:320px) and (max-width:600px) {
     width: 8.3rem;
-  height: 4rem;
+    height: 4rem;
 }
 `;
 
